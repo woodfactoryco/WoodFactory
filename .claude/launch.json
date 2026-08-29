@@ -4,14 +4,35 @@
     {
       "name": "woodfactory",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 5173
     },
     {
       "name": "woodfactory-legacy-static",
       "runtimeExecutable": "py",
-      "runtimeArgs": ["-m", "http.server", "5174", "-d", "legacy-static"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5174",
+        "-d",
+        "legacy-static"
+      ],
       "port": 5174
+    },
+    {
+      "name": "rail-proto",
+      "runtimeExecutable": "py",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5175",
+        "-d",
+        "C:\\Users\\daniel\\AppData\\Local\\Temp\\claude\\E--WoodFactory-Website\\76eaec1e-6e03-4634-903f-e93827039a00\\scratchpad\\proto"
+      ],
+      "port": 5175
     }
   ]
 }
