@@ -26,11 +26,8 @@ jobs:
         with:
           node-version: '20'
 
-      # `npm ci` needs a package-lock.json. There is no lockfile in the repo yet
-      # because this project was set up on a machine without Node. Once you have
-      # run `npm install` locally and committed package-lock.json, switch the
-      # line below to `npm ci` for faster, reproducible builds.
-      - run: npm install
+      # package-lock.json is committed, so install exact pinned versions
+      - run: npm ci
 
       - run: npm run build
 

@@ -36,8 +36,13 @@ export const GALLERY = [
     // portrait (1200x1600), same as stairs2 — keep it a single-width slide
     wide: false,
   },
-
+  {
+    src: '/assets/floating.jpeg',
+    caption: 'מדרגות מרחפות',
+    // portrait (1200x1600), same as stairs2 — keep it a single-width slide
+    wide: false,
+  }
   // ── להוסיף כאן תמונות נוספות ──
 ]
 
-export const EMPTY_SLOTS = 5
+export const EMPTY_SLOTS = 0

@@ -88,9 +88,11 @@ export default function Gallery({ onOpen }) {
         role="region"
         aria-label="גלריית עבודות"
       >
-        {GALLERY.map((photo) => (
+        {GALLERY.map((photo, i) => (
           <figure
-            key={photo.src}
+            /* index too: listing the same file twice is an easy slip, and a
+               duplicate key makes React drop or duplicate slides */
+            key={`${photo.src}-${i}`}
             className={photo.wide ? 'shot wide' : 'shot'}
             tabIndex={0}
             onClick={() => onOpen(photo)}

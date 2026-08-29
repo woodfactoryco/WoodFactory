@@ -82,9 +82,10 @@ src/
     Icon.jsx            <Icon name="mail" /> → <use href="#ic-mail" />
 ```
 
-`legacy-static/` is the plain HTML/CSS/JS version this was ported from. It runs
-with no toolchain (`py -m http.server 5173` from inside that folder) and can be
-deleted once the React version is running.
+There is exactly one copy of the site: the React app in `src/`. The old plain
+HTML/CSS/JS version was removed once React went live — it looked identical, so
+edits kept going into it by mistake and silently doing nothing. It is still in
+git history (`git show acac0fe:legacy-static/index.html`) if it is ever needed.
 
 ## Source files
 
