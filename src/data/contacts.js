@@ -22,18 +22,22 @@ export const CONTACTS = [
   },
   {
     icon: 'phone',
-    label: 'טלפון · וואטסאפ',
+    label: 'התקשרו אלינו',
     short: 'טלפון',
     value: '052-642-0506',
     href: 'tel:+972526420506',
     ltr: true,
   },
   {
-    icon: 'instagram',
-    label: 'אינסטגרם',
-    short: 'אינסטגרם',
-    value: '@wood_factory_israel',
-    href: 'https://www.instagram.com/wood_factory_israel/',
+    icon: 'whatsapp',
+    label: 'וואטסאפ',
+    short: 'וואטסאפ',
+    value: '052-642-0506',
+    // wa.me wants the number bare: country code, no +, no separators.
+    // The prefilled text just saves the customer typing an opener.
+    href:
+      'https://wa.me/972526420506?text=' +
+      encodeURIComponent('היי, הגעתי מהאתר ואשמח לקבל פרטים'),
     ltr: true,
     external: true,
   },
@@ -43,6 +47,15 @@ export const CONTACTS = [
     short: 'פייסבוק',
     value: 'Wood Factory',
     href: 'https://www.facebook.com/woodstairpro',
+    external: true,
+  },
+  {
+    icon: 'instagram',
+    label: 'אינסטגרם',
+    short: 'אינסטגרם',
+    value: '@wood_factory_israel',
+    href: 'https://www.instagram.com/wood_factory_israel/',
+    ltr: true,
     external: true,
   },
 ]
