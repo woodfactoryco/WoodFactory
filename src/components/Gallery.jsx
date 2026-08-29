@@ -38,12 +38,16 @@ export default function Gallery({ onOpen }) {
     const before = el.scrollLeft
     el.scrollBy({ left: delta, behavior: 'smooth' })
 
-    // Some embedded browsers — the in-app ones in Instagram and Facebook
-    // among them — accept a smooth scroll and then never animate it, leaving
-    // the rail stuck. If nothing has moved a few frames later, jump instead.
+    // Two quirks turn up in embedded browsers (the Instagram and Facebook
+    // in-app ones among them): a smooth scroll can be accepted and then never
+    // animated, and scroll events can go undispatched entirely. So jump if
+    // nothing moved, and refresh the arrows by hand rather than trusting
+    // onScroll to fire.
     window.setTimeout(() => {
       if (el.scrollLeft === before) el.scrollLeft = before + delta
+      sync()
     }, 120)
+    window.setTimeout(sync, 500)
   }
 
   return (
