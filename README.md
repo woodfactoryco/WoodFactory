@@ -15,6 +15,32 @@ npm run dev
 That serves the site at <http://localhost:5173>. `npm run build` writes a
 deployable copy to `dist/`, and `npm run preview` serves that build locally.
 
+## Deploying to GitHub Pages
+
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
+which runs the Vite build on GitHub's runners (they have Node, this machine
+does not) and publishes `dist/` to Pages.
+
+First-time setup:
+
+1. Create an empty repo at <https://github.com/new>. Do **not** add a README,
+   licence or .gitignore — this folder already has a commit.
+2. Connect and push:
+
+   ```bash
+   git remote add origin https://github.com/<your-user>/<your-repo>.git
+   git push -u origin main
+   ```
+
+3. In the repo: **Settings → Pages → Build and deployment → Source** and pick
+   **GitHub Actions**.
+4. Watch the **Actions** tab. The finished run prints the live URL, which will
+   be `https://<your-user>.github.io/<your-repo>/`.
+
+After that, every `git push` to `main` redeploys. The repo name does not need
+to be hardcoded anywhere — `vite.config.js` reads it from the environment at
+build time and sets `base` accordingly.
+
 ## Adding photos to the gallery
 
 1. Put the image file in `public/assets/`.
@@ -24,7 +50,8 @@ deployable copy to `dist/`, and `npm run preview` serves that build locally.
    { src: '/assets/kitchen-01.jpg', caption: 'מטבח אלון מלא', wide: false },
    ```
 
-   `wide: true` makes a photo span two columns.
+   `wide: true` makes a photo span two columns. Keep the leading `/assets/`
+   — `asset()` rewrites it for whatever sub-path the site is served from.
 3. Save — the page reloads itself while `npm run dev` is running.
 
 `EMPTY_SLOTS` in the same file controls how many dashed "תמונה בקרוב"
