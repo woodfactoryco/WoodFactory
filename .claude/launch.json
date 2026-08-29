@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "woodfactory",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "woodfactory-legacy-static",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "5174", "-d", "legacy-static"],
+      "port": 5174
+    }
+  ]
+}

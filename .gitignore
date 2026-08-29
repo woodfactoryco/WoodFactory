@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+
+# Reproducible from the archives in "Logo files/" — no need to version it
+Logo files/extracted/
