@@ -21,18 +21,6 @@
         "legacy-static"
       ],
       "port": 5174
-    },
-    {
-      "name": "rail-proto",
-      "runtimeExecutable": "py",
-      "runtimeArgs": [
-        "-m",
-        "http.server",
-        "5175",
-        "-d",
-        "C:\\Users\\daniel\\AppData\\Local\\Temp\\claude\\E--WoodFactory-Website\\76eaec1e-6e03-4634-903f-e93827039a00\\scratchpad\\proto"
-      ],
-      "port": 5175
     }
   ]
 }
