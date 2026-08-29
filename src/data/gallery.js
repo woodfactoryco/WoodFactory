@@ -23,6 +23,20 @@ export const GALLERY = [
     wide: true,
   },
 
+  {
+    src: '/assets/stairs2.jpg',
+    caption: 'מדרגות עץ + קאנט',
+    // portrait photo (1200x1600) — a wide slide is 8:5 and would crop it hard
+    wide: false,
+  },
+
+  {
+    src: '/assets/stairs3.jpg',
+    caption: 'מדרגות + רום לבן',
+    // portrait (1200x1600), same as stairs2 — keep it a single-width slide
+    wide: false,
+  },
+
   // ── להוסיף כאן תמונות נוספות ──
 ]
 

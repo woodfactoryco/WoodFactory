@@ -151,7 +151,13 @@ a{ color:inherit; text-decoration:none; }
 .section-note{ color:var(--ink-soft); margin:12px 0 0; max-width:54ch; font-size:16px; }
 
 /* ── cards ───────────────────────────────────────────── */
-.cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+/* auto-fit rather than a fixed 3 columns: unused tracks collapse, so the
+   cards always fill the row whether there are two of them or four */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px;
+}
 .card{
   background:var(--card);
   border:1.5px solid var(--line);
@@ -189,6 +195,28 @@ a{ color:inherit; text-decoration:none; }
 }
 .about-text p{ color:var(--ink-soft); margin:0 0 18px; max-width:52ch; }
 .about-text .btn{ margin-top:12px; }
+/* pull quote inside the about section — rule on the start edge rather than
+   an italic, since Hebrew has no real italic and slanting it just smears */
+.quote{
+  margin:26px 0 30px;
+  padding-inline-start:20px;
+  border-inline-start:2px solid var(--ink);
+}
+.quote p{
+  margin:0 0 14px;
+  font-size:clamp(18.5px, 1.9vw, 21px);
+  line-height:1.55;
+  font-weight:300;
+  color:var(--ink);
+  max-width:44ch;
+}
+.quote cite{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px;
+  font-style:normal;
+}
+.quote-name{ font-size:14.5px; font-weight:600; color:var(--ink); }
+.quote-role{ font-size:13px; color:var(--ink-soft); letter-spacing:.04em; }
+
 
 /* ── gallery: horizontal swipe rail ───────────────────
    Replaces the tall multi-row grid. One row, native touch
@@ -227,6 +255,9 @@ a{ color:inherit; text-decoration:none; }
 .rail > *{
   flex:0 0 clamp(228px, 29%, 296px);
   scroll-snap-align:start;
+  /* one fixed height for every slide: flex stretches them to match anyway,
+     so sizing each image by its own aspect-ratio left short ones with a gap */
+  height:clamp(220px, 26vw, 300px);
 }
 .rail > .wide{ flex-basis:clamp(320px, 46%, 452px); }
 
@@ -241,7 +272,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .shot:hover{ border-color:var(--ink); transform:translateY(-3px); }
 .shot img{
-  width:100%; aspect-ratio:4/3; object-fit:cover;
+  width:100%; height:100%; object-fit:cover;
   filter:saturate(.9);
 }
 .shot figcaption{
@@ -253,7 +284,6 @@ a{ color:inherit; text-decoration:none; }
 
 /* empty slots — placeholders until the photos land */
 .slot{
-  aspect-ratio:4/3;
   border:1.5px dashed var(--line);
   border-radius:var(--radius);
   display:grid; place-content:center; gap:8px; text-align:center;

@@ -23,16 +23,6 @@ const SERVICES = [
       </g>
     ),
   },
-  {
-    title: 'חיפוי קירות ונגרות',
-    body: 'חיפויי עץ לקירות, ארונות, דלתות ומטבחים שמתוכננים סביב החלל שלכם.',
-    icon: (
-      <g fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square">
-        <rect x="4" y="5" width="32" height="30" />
-        <path d="M12 5v30M20 5v30M28 5v30" />
-      </g>
-    ),
-  },
 ]
 
 export default function Craft() {

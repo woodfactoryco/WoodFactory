@@ -5,6 +5,16 @@ import { asset } from '../lib/asset.js'
    below; leave it empty and the caption stays generic. */
 const NAMES = ''   // e.g. 'דניאל ואנה'
 
+/* Set QUOTE to null and the block disappears. */
+const QUOTE = {
+  text:
+    'ב-WoodFactory אנחנו מאמינים בליווי אישי ובוחרים יחד עם הלקוחות את ' +
+    'המדרגה והפרקט שהכי מאפיינים אותם. מוזמנים להגיע אלינו, לשבת לכוס קפה, ' +
+    'לבחור איזה סוג מדרגה ופרקט הכי יתאימו לכם ואנחנו נדאג לשאר!',
+  name: "זאנ'ה גלדישב",
+  role: 'בעלים, WoodFactory',
+}
+
 export default function About() {
   return (
     <section className="section" id="about">
@@ -20,18 +30,31 @@ export default function About() {
 
         <div className="about-text">
           <p className="eyebrow">מי אנחנו</p>
-          <h2>נגרייה קטנה, עבודה אישית</h2>
+          <h2>נגריית בוטיק ותצוגה</h2>
 
           <p>
-            WoodFactory היא נגרייה קטנה שמתכננת, מייצרת ומתקינה בעצמה.
-            מהמדידה הראשונה בבית שלכם ועד הגימור האחרון — הכול עובר דרך
-            הידיים שלנו, בלי קבלני משנה ובלי מסירת אחריות באמצע.
+            WoodFactory הינה נגריית בוטיק בחולון אשר מתמחה בייצור מדרגות עץ מכל סוגי הפרקט והעץ. אולג וזאנ'ה, הבעלים, מביאים אליכם לבית שנים רבות של ניסיון יחודי ביותר בהכנת
+            מדרגות.          
           </p>
           <p>
-            מדרגות עץ הן הלב של מה שאנחנו עושים, ולצידן פרקטים וחיפויי
-            קירות. אנחנו עובדים בבתים פרטיים ובדירות, לבד או יחד עם
-            אדריכלים ומעצבים.
+
+            אולג הינו בעל מקצוע אשר רכש את כישוריו באחד מבתי הספר הטובים לנגרות ברוסיה, מביא פתרונות חדשניים למדרגות אשר מעניקות להם עמידות ארוכת שנים.
+
           </p>
+          <p>
+            מדרגות עץ הן לב העשייה שלנו, אבל חשוב להדגיש שאנחנו מתעסקים גם בהתקנת פרקטים מכל הסוגים וברמה הכי גבוהה שיש.
+          </p>
+      
+
+          {QUOTE && (
+            <blockquote className="quote">
+              <p>{QUOTE.text}</p>
+              <cite>
+                <span className="quote-name">{QUOTE.name}</span>
+                {QUOTE.role && <span className="quote-role">{QUOTE.role}</span>}
+              </cite>
+            </blockquote>
+          )}
 
           <a className="btn" href="#contact">דברו איתנו</a>
         </div>

@@ -23,6 +23,16 @@ const GALLERY = [
     wide: true
   },
 
+  {
+    src: "assets/stairs2.jpg",
+    caption:"מדרגות עץ + קאנט",
+    wide: true
+  },
+  {
+    src: "assets/stairs3.jpg",
+    caption:"מדרגות + רום לבן",
+    wide: true
+  }
   // ── להוסיף כאן תמונות נוספות ──
 ];
 
