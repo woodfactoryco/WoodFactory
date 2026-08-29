@@ -33,7 +33,17 @@ export default function Gallery({ onOpen }) {
     const gap = parseFloat(getComputedStyle(el).columnGap) || 14
     const stride = first ? first.getBoundingClientRect().width + gap : 300
     const rtl = getComputedStyle(el).direction === 'rtl'
-    el.scrollBy({ left: (rtl ? -dir : dir) * stride, behavior: 'smooth' })
+    const delta = (rtl ? -dir : dir) * stride
+
+    const before = el.scrollLeft
+    el.scrollBy({ left: delta, behavior: 'smooth' })
+
+    // Some embedded browsers — the in-app ones in Instagram and Facebook
+    // among them — accept a smooth scroll and then never animate it, leaving
+    // the rail stuck. If nothing has moved a few frames later, jump instead.
+    window.setTimeout(() => {
+      if (el.scrollLeft === before) el.scrollLeft = before + delta
+    }, 120)
   }
 
   return (
