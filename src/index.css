@@ -164,6 +164,32 @@ a{ color:inherit; text-decoration:none; }
 .card h3{ margin:16px 0 8px; font-size:20px; font-weight:700; letter-spacing:-.01em; }
 .card p{ margin:0; color:var(--ink-soft); font-size:15.5px; }
 
+/* ── about ────────────────────────────────────
+   Mirrors the hero: there the image sits on the start
+   side, here on the end side, so the two alternate.
+   ────────────────────────────────────────── */
+.about-grid{
+  display:grid; grid-template-columns:0.85fr 1fr; gap:56px; align-items:center;
+}
+.about-img{ margin:0; }
+.about-img img{
+  width:100%; aspect-ratio:4/5; object-fit:cover;
+  border-radius:var(--radius);
+  border:1.5px solid var(--ink);
+  box-shadow:12px 12px 0 0 var(--ink);
+  filter:saturate(.9) contrast(1.02);
+}
+.about-img figcaption{
+  font-size:13px; color:var(--ink-soft); margin-top:24px; letter-spacing:.02em;
+}
+.about-text h2{
+  margin:0 0 20px;
+  font-size:clamp(28px, 3.4vw, 40px);
+  letter-spacing:-.02em; font-weight:800;
+}
+.about-text p{ color:var(--ink-soft); margin:0 0 18px; max-width:52ch; }
+.about-text .btn{ margin-top:12px; }
+
 /* ── gallery: horizontal swipe rail ───────────────────
    Replaces the tall multi-row grid. One row, native touch
    swipe via scroll-snap, arrows for pointer devices.
@@ -301,6 +327,8 @@ a{ color:inherit; text-decoration:none; }
 /* ── responsive ──────────────────────────────────────── */
 @media (max-width:900px){
   .hero{ grid-template-columns:1fr; gap:40px; padding-top:32px; }
+  .about-grid{ grid-template-columns:1fr; gap:36px; }
+  .about-img img{ aspect-ratio:4/3; }
   .cards{ grid-template-columns:1fr; }
 }
 @media (max-width:600px){
@@ -317,4 +345,5 @@ a{ color:inherit; text-decoration:none; }
   .contact-grid{ grid-template-columns:1fr; }
   .contact-card:last-child:nth-child(odd){ grid-column:auto; }
   .hero-img img{ box-shadow:-8px 8px 0 0 var(--ink); }
+  .about-img img{ box-shadow:8px 8px 0 0 var(--ink); }
 }

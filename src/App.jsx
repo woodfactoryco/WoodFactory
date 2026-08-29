@@ -5,6 +5,7 @@ import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import Craft from './components/Craft.jsx'
 import Gallery from './components/Gallery.jsx'
+import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import Lightbox from './components/Lightbox.jsx'
@@ -26,6 +27,7 @@ export default function App() {
         <Hero />
         <Craft />
         <Gallery onOpen={setOpenPhoto} />
+        <About />
         <Contact />
       </main>
 

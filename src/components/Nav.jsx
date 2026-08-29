@@ -10,6 +10,7 @@ export default function Nav() {
       <nav className="nav-links">
         <a href="#work">עבודות</a>
         <a href="#craft">מה אנחנו עושים</a>
+        <a href="#about">מי אנחנו</a>
 
       </nav>
 
