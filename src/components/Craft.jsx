@@ -28,13 +28,18 @@ const SERVICES = [
 export default function Craft() {
   return (
     <section className="section" id="craft">
-      <div className="section-head">
+      <div className="section-head" data-reveal>
         <h2>מה אנחנו עושים</h2>
       </div>
 
       <div className="cards">
-        {SERVICES.map((s) => (
-          <article className="card" key={s.title}>
+        {SERVICES.map((s, i) => (
+          <article
+            className="card"
+            key={s.title}
+            data-reveal
+            style={{ '--d': `${i * 70}ms` }}
+          >
             <svg className="card-ico" viewBox="0 0 40 40" aria-hidden="true">
               {s.icon}
             </svg>

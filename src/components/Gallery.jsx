@@ -52,7 +52,7 @@ export default function Gallery({ onOpen }) {
 
   return (
     <section className="section" id="work">
-      <div className="section-head gallery-head">
+      <div className="section-head gallery-head" data-reveal>
         <div>
           <h2>עבודות נבחרות</h2>
           <p className="section-note">
@@ -81,6 +81,7 @@ export default function Gallery({ onOpen }) {
       </div>
 
       <div
+        data-reveal
         className="rail"
         ref={railRef}
         onScroll={sync}

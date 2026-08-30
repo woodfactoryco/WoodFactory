@@ -4,8 +4,7 @@ React + Vite. Hebrew, RTL. Monochrome palette taken from the brand vector.
 
 ## Running it
 
-Node.js is **not currently installed on this machine** — install it first from
-<https://nodejs.org> (the LTS build), then reopen the terminal and:
+Node.js 24 LTS is installed. From the project folder:
 
 ```bash
 npm install
@@ -18,8 +17,7 @@ deployable copy to `dist/`, and `npm run preview` serves that build locally.
 ## Deploying to GitHub Pages
 
 Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
-which runs the Vite build on GitHub's runners (they have Node, this machine
-does not) and publishes `dist/` to Pages.
+which runs the Vite build on GitHub's runners and publishes `dist/` to Pages.
 
 First-time setup:
 

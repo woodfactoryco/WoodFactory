@@ -304,7 +304,8 @@ a{ color:inherit; text-decoration:none; }
   background:var(--card);
   border:1.5px solid var(--line);
   border-radius:var(--radius);
-  transition:background .2s, border-color .2s, color .2s;
+  transition:background .2s, border-color .2s, color .2s,
+              transform .18s cubic-bezier(.22,.61,.36,1);
 }
 .contact-card:hover{ background:var(--ink); border-color:var(--ink); color:#fff; }
 .contact-card:hover .contact-label{ color:#b9b9b6; }
@@ -354,6 +355,66 @@ a{ color:inherit; text-decoration:none; }
 }
 .lb-close:hover{ background:#fff; color:var(--ink); border-color:#fff; }
 
+/* ── motion ──────────────────────────────────────────
+   Everything here sits inside prefers-reduced-motion:
+   no-preference. Someone who asks for less motion gets
+   the page with no hidden states and no animation at
+   all, rather than a version that depends on JS to
+   become visible.
+   ──────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference){
+
+  /* Scroll reveal, driven by animation rather than transition. `transition`
+     is a shorthand, so declaring it here fought with each component's own
+     transition and one of the two lost outright. An animation composes.
+     --d staggers siblings; `backwards` holds the start state during the delay. */
+  [data-reveal]{ opacity:0; }
+  [data-reveal].is-in{
+    opacity:1;
+    animation:rise .55s cubic-bezier(.22,.61,.36,1) var(--d, 0ms) backwards;
+  }
+
+  /* hero comes in on load, top to bottom */
+  .hero-text > *, .hero-img{ animation:rise .7s cubic-bezier(.22,.61,.36,1) backwards; }
+  .hero-text > *:nth-child(1){ animation-delay:.04s; }
+  .hero-text > *:nth-child(2){ animation-delay:.10s; }
+  .hero-text > *:nth-child(3){ animation-delay:.16s; }
+  .hero-text > *:nth-child(4){ animation-delay:.22s; }
+  .hero-img{ animation-delay:.14s; }
+
+  /* Hover cannot happen on a touch screen, so these are scoped to devices
+     that actually have a pointer, and given press feedback for the rest. */
+  .shot img{ transition:transform .6s cubic-bezier(.22,.61,.36,1); }
+  .contact-card .arrow{ transition:transform .25s ease, opacity .25s ease; }
+  .contact-card, .btn, .card{ -webkit-tap-highlight-color:transparent; }
+
+  @media (hover: hover){
+    .shot:hover img{ transform:scale(1.045); }
+    .contact-card:hover .arrow{ transform:translateX(-4px); opacity:.85; }
+  }
+
+  @media (hover: none){
+    .shot:active img{ transform:scale(1.03); }
+    .contact-card:active{ transform:scale(.985); }
+    .contact-card:active .arrow{ transform:translateX(-4px); }
+    .card:active{ transform:scale(.99); }
+    .btn:active{ transform:scale(.97); }
+
+  }
+}
+
+@keyframes rise{ from{ opacity:0; transform:translateY(16px); } }
+
+/* underline grows from the RTL start edge; no motion needed to read it */
+.nav-links a{ position:relative; }
+.nav-links a::after{
+  content:''; position:absolute; inset-inline:0; bottom:-5px; height:1.5px;
+  background:currentColor;
+  transform:scaleX(0); transform-origin:right;
+  transition:transform .28s cubic-bezier(.22,.61,.36,1);
+}
+@media (hover: hover){ .nav-links a:hover::after{ transform:scaleX(1); } }
+
 /* ── responsive ──────────────────────────────────────── */
 @media (max-width:900px){
   .hero{ grid-template-columns:1fr; gap:40px; padding-top:32px; }
@@ -374,6 +435,8 @@ a{ color:inherit; text-decoration:none; }
   .rail > .wide{ flex-basis:88%; }
   .contact-grid{ grid-template-columns:1fr; }
   .contact-card:last-child:nth-child(odd){ grid-column:auto; }
+  /* one column: nothing to stagger against, so the delay is pure latency */
+  [data-reveal]{ --d:0ms !important; }
   .hero-img img{ box-shadow:-8px 8px 0 0 var(--ink); }
   .about-img img{ box-shadow:8px 8px 0 0 var(--ink); }
 }

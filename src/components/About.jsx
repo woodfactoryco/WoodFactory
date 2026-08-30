@@ -19,7 +19,7 @@ export default function About() {
   return (
     <section className="section" id="about">
       <div className="about-grid">
-        <figure className="about-img">
+        <figure className="about-img" data-reveal>
           <img
             src={asset('/assets/founders.jpg')}
             alt="הבעלים של WoodFactory"
@@ -28,17 +28,17 @@ export default function About() {
           <figcaption>{NAMES || 'הבעלים של WoodFactory'}</figcaption>
         </figure>
 
-        <div className="about-text">
+        <div className="about-text" data-reveal style={{ '--d': '90ms' }}>
           <p className="eyebrow">מי אנחנו</p>
           <h2>נגריית בוטיק ותצוגה</h2>
 
           <p>
-            WoodFactory הינה נגריית בוטיק בחולון אשר מתמחה בייצור מדרגות עץ מכל סוגי הפרקט והעץ. אולג וזאנ'ה, הבעלים, מביאים אליכם לבית שנים רבות של ניסיון יחודי ביותר בהכנת
+            WoodFactory הינה נגריית בוטיק בחולון אשר מתמחה בייצור מדרגות עץ מכל סוגי הפרקט והעץ. אולג וזאנ'ה, הבעלים, מביאים אליכם לבית שנים רבות של ניסיון ייחודי ביותר בהכנת
             מדרגות.          
           </p>
           <p>
 
-            אולג הינו בעל מקצוע אשר רכש את כישוריו באחד מבתי הספר הטובים לנגרות ברוסיה, מביא פתרונות חדשניים למדרגות אשר מעניקות להם עמידות ארוכת שנים.
+            אולג הינו בעל מקצוע אשר רכש את כישוריו באחד מבתי הספר הטובים לנגרות ברוסיה, ומביא פתרונות חדשניים למדרגות אשר מעניקים להן עמידות ארוכת שנים.
 
           </p>
           <p>

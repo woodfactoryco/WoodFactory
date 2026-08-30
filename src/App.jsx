@@ -1,5 +1,7 @@
 import { useCallback, useState } from 'react'
 
+import { useReveal } from './lib/useReveal.js'
+
 import IconSprite from './components/IconSprite.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
@@ -15,6 +17,8 @@ export default function App() {
   const [openPhoto, setOpenPhoto] = useState(null)
   // stable identity so the lightbox's key/scroll-lock effect isn't torn down each render
   const closeLightbox = useCallback(() => setOpenPhoto(null), [])
+
+  useReveal()
 
   return (
     <>
